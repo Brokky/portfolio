@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 function App() {
   // states for typing text with blinking cursor
   const [name, setName] = useState("");
-  const fullName = " Daniel Brokk ";
-
+  const [codeText, setCodeText] = useState("");
   const [isTypingFinished, setIsTypingFinished] = useState(false);
+
+  const fullName = " Daniel Brokk ";
+  const gitHub = "GitHub";
 
   // random delay for simulating
   const getRandomDelay = (min, max) => {
@@ -24,11 +26,10 @@ function App() {
 
         if (i === fullName.length - 1) {
           setIsTypingFinished(true);
-          typeDeveloperText();
           return;
         }
 
-        setTimeout(typeName, getRandomDelay(100, 500));
+        setTimeout(typeName, getRandomDelay(50, 200));
       }
     };
 
@@ -39,33 +40,70 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (isTypingFinished) {
+      let codeTexts = [" 10 PRINT 'Hello, World!'", " 20 GOTO 10"];
+      let currentTextIndex = 0;
+      let charIndex = 0;
+
+      const typeCodeText = () => {
+        if (charIndex < codeTexts[currentTextIndex].length - 1) {
+          console.log(codeTexts[currentTextIndex][charIndex]);
+          setCodeText(
+            (prevText) => prevText + codeTexts[currentTextIndex][charIndex]
+          );
+          charIndex++;
+          setTimeout(typeCodeText, getRandomDelay(50, 200));
+        } else {
+          // После того как одна строка напечатана, переходим к следующей или начинаем сначала
+          if (currentTextIndex === codeTexts.length - 1) {
+            setTimeout(() => {
+              // Добавляем задержку перед стиранием текста
+              setCodeText("");
+              currentTextIndex = 0;
+              charIndex = 0;
+              setTimeout(typeCodeText, getRandomDelay(50, 200));
+            }, 1000); // Задержка в 1 секунду
+          } else {
+            setCodeText((prevText) => prevText + "\n");
+            currentTextIndex++;
+            charIndex = 0;
+            setTimeout(typeCodeText, getRandomDelay(50, 200));
+          }
+        }
+      };
+
+      typeCodeText();
+    }
+  }, [isTypingFinished]);
   return (
     <div className="min-h-screen bg-black text-green-400 flex flex-col p-8 space-y-8">
       {/* Header */}
-      <div className="flex justify-between items-center space-x-4">
-        <h1
-          className="text-6xl font-mono bg-clip-text text-transparent bg-gradient-to-r
+      <div className="flex">
+        <div className="flex flex-col justify-between items-center space-x-4">
+          <h1
+            className="text-6xl font-mono bg-clip-text text-transparent bg-gradient-to-r
          from-green-400 to-green-700 shadow-lg transform transition-transform duration-700 delay-150 hover:scale-110 hover:shadow-xl
           focus:scale-110 focus:shadow-xl animate-pulse"
-        >
-          [{name}
-          {!isTypingFinished && (
-            <span className="text-green-400 blinking">|</span>
-          )}
-          ]
-        </h1>
-        <p className="text-2xl font-mono border-b-2 border-green-600 hover:border-green-700 transition duration-300">
-          Frontend Developer
-        </p>
+          >
+            [{name}
+            {!isTypingFinished && (
+              <span className="text-green-400 blinking">|</span>
+            )}
+            ]
+          </h1>
+          <p className="text-2xl font-mono border-b-2 border-green-600 hover:border-green-700 transition duration-300 my-4">
+            {isTypingFinished && ('Frontend Developer')}
+          </p>
+        </div>
+        <p className="">GitHub</p>
       </div>
 
       {/* Matrix Digital Rain Effect */}
-      <pre className="my-6 text-sm font-mono p-4 rounded text-green-500">
-        10 PRINT "HELLO WORLD"
-        <br />
-        20 GOTO 10
+      <pre className="my-6 text-sm font-mono p-4 rounded text-green-500 h-[3rem]">
+        {codeText}
+        {isTypingFinished && "|"}
       </pre>
-
       {/* Portfolio Section */}
       <div className="flex-grow grid grid-cols-1 gap-6 mt-6">
         <div className="p-4 border-dashed border-2 border-green-600 rounded relative hover:border-green-700 transition duration-300">
