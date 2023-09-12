@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   // states for typing text with blinking cursor
+  
   const [name, setName] = useState("");
   const [codeText, setCodeText] = useState("");
   const [isTypingFinished, setIsTypingFinished] = useState(false);
