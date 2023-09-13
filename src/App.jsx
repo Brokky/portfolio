@@ -2,109 +2,104 @@ import { useState, useEffect } from "react";
 
 function App() {
   // states for typing text with blinking cursor
-  
-  const [name, setName] = useState("");
-  const [codeText, setCodeText] = useState("");
-  const [isTypingFinished, setIsTypingFinished] = useState(false);
+  const [displayedText, setDisplayedText] = useState({
+    name: "",
+    job: "",
+    typingStatus: "name",
+  });
 
-  const fullName = " Daniel Brokk ";
-  const gitHub = "GitHub";
+  const name = " Daniel Brokk ";
+  const job = "Frontend Developer";
 
-  // random delay for simulating
-  const getRandomDelay = (min, max) => {
-    return Math.random() * (max - min) + min;
-  };
-
-  // starting animation
   useEffect(() => {
-    let i = 0;
+    const interval = setInterval(() => {
+      setDisplayedText((prevText) => {
+        const nextNameChar = name[prevText.name.length];
+        const nextJobChar = job[prevText.job.length];
 
-    const typeName = () => {
-      if (i < fullName.length - 1) {
-        setName((prevText) => prevText + fullName[i]);
-
-        i++;
-
-        if (i === fullName.length - 1) {
-          setIsTypingFinished(true);
-          return;
+        if (nextNameChar) {
+          return {
+            ...prevText,
+            name: prevText.name + nextNameChar,
+            typingStatus:
+              prevText.name.length === name.length - 1
+                ? "job"
+                : prevText.typingStatus,
+          };
+        } else if (nextJobChar) {
+          return {
+            ...prevText,
+            job: prevText.job + nextJobChar,
+            typingStatus:
+              prevText.job.length === job.length - 1
+                ? "finished"
+                : prevText.typingStatus,
+          };
         }
 
-        setTimeout(typeName, getRandomDelay(50, 200));
-      }
-    };
-
-    typeName();
+        return prevText;
+      });
+    }, 100);
 
     return () => {
-      i = fullName.length - 1; // finish animation
+      clearInterval(interval);
     };
   }, []);
 
-  useEffect(() => {
-    if (isTypingFinished) {
-      let codeTexts = [" 10 PRINT 'Hello, World!'", " 20 GOTO 10"];
-      let currentTextIndex = 0;
-      let charIndex = 0;
-
-      const typeCodeText = () => {
-        if (charIndex < codeTexts[currentTextIndex].length - 1) {
-          console.log(codeTexts[currentTextIndex][charIndex]);
-          setCodeText(
-            (prevText) => prevText + codeTexts[currentTextIndex][charIndex]
-          );
-          charIndex++;
-          setTimeout(typeCodeText, getRandomDelay(50, 200));
-        } else {
-          // После того как одна строка напечатана, переходим к следующей или начинаем сначала
-          if (currentTextIndex === codeTexts.length - 1) {
-            setTimeout(() => {
-              // Добавляем задержку перед стиранием текста
-              setCodeText("");
-              currentTextIndex = 0;
-              charIndex = 0;
-              setTimeout(typeCodeText, getRandomDelay(50, 200));
-            }, 1000); // Задержка в 1 секунду
-          } else {
-            setCodeText((prevText) => prevText + "\n");
-            currentTextIndex++;
-            charIndex = 0;
-            setTimeout(typeCodeText, getRandomDelay(50, 200));
-          }
-        }
-      };
-
-      typeCodeText();
-    }
-  }, [isTypingFinished]);
   return (
     <div className="min-h-screen bg-black text-green-400 flex flex-col p-8 space-y-8">
       {/* Header */}
-      <div className="flex">
+      <div className="flex justify-between">
         <div className="flex flex-col justify-between items-center space-x-4">
           <h1
             className="text-6xl font-mono bg-clip-text text-transparent bg-gradient-to-r
-         from-green-400 to-green-700 shadow-lg transform transition-transform duration-700 delay-150 hover:scale-110 hover:shadow-xl
-          focus:scale-110 focus:shadow-xl animate-pulse"
+         from-green-400 to-green-700 shadow-lg focus:scale-110 focus:shadow-xl animate-pulse"
           >
-            [{name}
-            {!isTypingFinished && (
-              <span className="text-green-400 blinking">|</span>
+            [{displayedText.name}
+            {displayedText.typingStatus === "name" && (
+              <span className="text-green-400 animate-blinking">|</span>
             )}
             ]
           </h1>
           <p className="text-2xl font-mono border-b-2 border-green-600 hover:border-green-700 transition duration-300 my-4">
-            {isTypingFinished && ('Frontend Developer')}
+            {displayedText.job}
+            {displayedText.typingStatus === "job" && (
+              <span className="text-green-400 animate-blinking">|</span>
+            )}
           </p>
         </div>
-        <p className="">GitHub</p>
+        <ul className="space-y-8">
+          <li>
+            <a
+              href="https://github.com/Brokky"
+              target="_blank"
+              className={`w-32 inline-block text-center text-2xl bg-black border-2 rounded-full border-green-400 px-4 py-2 button-transition transform hover:scale-125 hover:bg-green-400 hover:text-black hover:border-black ${
+                displayedText.typingStatus === "finished"
+                  ? "opacity-100"
+                  : "opacity-0"
+              }`}
+            >
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/daniel-brokk-898b0b24b/"
+              target="_blank"
+              className={`w-32 inline-block text-center text-2xl bg-black border-2 rounded-full border-green-400 px-4 py-2 button-transition button-transition-delay transform hover:scale-125 hover:bg-green-400 hover:text-black hover:border-black ${
+                displayedText.typingStatus === "finished"
+                  ? "opacity-100"
+                  : "opacity-0"
+              }`}
+            >
+              LinkedIn
+            </a>
+          </li>
+        </ul>
       </div>
 
       {/* Matrix Digital Rain Effect */}
-      <pre className="my-6 text-sm font-mono p-4 rounded text-green-500 h-[3rem]">
-        {codeText}
-        {isTypingFinished && "|"}
-      </pre>
+      <pre className="my-6 text-sm font-mono p-4 rounded text-green-500 h-[3rem]"></pre>
       {/* Portfolio Section */}
       <div className="flex-grow grid grid-cols-1 gap-6 mt-6">
         <div className="p-4 border-dashed border-2 border-green-600 rounded relative hover:border-green-700 transition duration-300">

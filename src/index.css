@@ -2,18 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes blinking {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+.button-transition {
+  transition-property: transform, opacity;
+  transition-duration: 500ms, 1000ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
-.blinking {
-  animation: blinking 1s infinite;
+.button-transition-delay {
+  transition-property: transform, opacity;
+  transition-duration: 500ms, 1000ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); 
+  transition-delay: 0ms, 1000ms;
 }
+
