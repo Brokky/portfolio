@@ -49,11 +49,13 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-green-400 flex flex-col p-8 space-y-8">
       {/* Header */}
-      <div className="flex justify-between">
-        <div className="flex flex-col justify-between items-center space-x-4">
+      <div className="flex justify-between items-center">
+        <div className="w-32"></div>{" "}
+        {/* Добавлено для сохранения пустого пространства слева */}
+        <div className="flex flex-col items-center space-x-4">
           <h1
             className="text-6xl font-mono bg-clip-text text-transparent bg-gradient-to-r
-         from-green-400 to-green-700 shadow-lg focus:scale-110 focus:shadow-xl animate-pulse"
+     from-green-400 to-green-700 shadow-lg focus:scale-110 focus:shadow-xl animate-pulse"
           >
             [{displayedText.name}
             {displayedText.typingStatus === "name" && (
