@@ -1,107 +1,11 @@
-import { useState, useEffect } from "react";
+import Header from "./components/header/Header";
 
 function App() {
-  // states for typing text with blinking cursor
-  const [displayedText, setDisplayedText] = useState({
-    name: "",
-    job: "",
-    typingStatus: "name",
-  });
 
-  const name = " Daniel Brokk ";
-  const job = "Frontend Developer";
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDisplayedText((prevText) => {
-        const nextNameChar = name[prevText.name.length];
-        const nextJobChar = job[prevText.job.length];
-
-        if (nextNameChar) {
-          return {
-            ...prevText,
-            name: prevText.name + nextNameChar,
-            typingStatus:
-              prevText.name.length === name.length - 1
-                ? "job"
-                : prevText.typingStatus,
-          };
-        } else if (nextJobChar) {
-          return {
-            ...prevText,
-            job: prevText.job + nextJobChar,
-            typingStatus:
-              prevText.job.length === job.length - 1
-                ? "finished"
-                : prevText.typingStatus,
-          };
-        }
-
-        return prevText;
-      });
-    }, 100);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-black text-green-400 flex flex-col p-8 space-y-8">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <div className="w-32"></div>{" "}
-        {/* Добавлено для сохранения пустого пространства слева */}
-        <div className="flex flex-col items-center space-x-4">
-          <h1
-            className="text-6xl font-mono bg-clip-text text-transparent bg-gradient-to-r
-     from-green-400 to-green-700 shadow-lg focus:scale-110 focus:shadow-xl animate-pulse"
-          >
-            [{displayedText.name}
-            {displayedText.typingStatus === "name" && (
-              <span className="text-green-400 animate-blinking">|</span>
-            )}
-            ]
-          </h1>
-          <p className="text-2xl font-mono border-b-2 border-green-600 hover:border-green-700 transition duration-300 my-4">
-            {displayedText.job}
-            {displayedText.typingStatus === "job" && (
-              <span className="text-green-400 animate-blinking">|</span>
-            )}
-          </p>
-        </div>
-        <ul className="space-y-8">
-          <li>
-            <a
-              href="https://github.com/Brokky"
-              target="_blank"
-              className={`w-32 inline-block text-center text-2xl bg-black border-2 rounded-full border-green-400 px-4 py-2 button-transition transform hover:scale-125 hover:bg-green-400 hover:text-black hover:border-black ${
-                displayedText.typingStatus === "finished"
-                  ? "opacity-100"
-                  : "opacity-0"
-              }`}
-            >
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/daniel-brokk-898b0b24b/"
-              target="_blank"
-              className={`w-32 inline-block text-center text-2xl bg-black border-2 rounded-full border-green-400 px-4 py-2 button-transition button-transition-delay transform hover:scale-125 hover:bg-green-400 hover:text-black hover:border-black ${
-                displayedText.typingStatus === "finished"
-                  ? "opacity-100"
-                  : "opacity-0"
-              }`}
-            >
-              LinkedIn
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Matrix Digital Rain Effect */}
-      <pre className="my-6 text-sm font-mono p-4 rounded text-green-500 h-[3rem]"></pre>
+      <Header />
       {/* Portfolio Section */}
       <div className="flex-grow grid grid-cols-1 gap-6 mt-6">
         <div className="p-4 border-dashed border-2 border-green-600 rounded relative hover:border-green-700 transition duration-300">
