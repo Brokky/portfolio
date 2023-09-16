@@ -11,7 +11,7 @@ const Name = ({displayedText}) => {
         )}
         ]
       </h1>
-      <p className="text-2xl font-mono border-b-2 border-green-600 hover:border-green-700 transition duration-300 my-4">
+      <p className={`text-2xl font-mono border-x-2 border-green-400 px-2 my-4 ${displayedText.typingStatus !== "name" && "border-b-2"}`}>
         {displayedText.job}
         {displayedText.typingStatus === "job" && (
           <span className="text-green-400 animate-blinking">|</span>
