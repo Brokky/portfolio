@@ -21,7 +21,7 @@ const Portfolio = () => {
   const [FIRST_IMG_INDEX, LAST_IMG_INDEX] = [0, images.length - 1];
 
   return (
-    <div className="flex justify-evenly items-center py-8 border-2 border-green-600 rounded-3xl">
+    <section className="flex justify-evenly items-center py-8 border-2 border-green-600 rounded-3xl">
       {/* H2 Projects Title */}
       <button
         className={`text-8xl hover:scale-150 ${
@@ -31,7 +31,7 @@ const Portfolio = () => {
       >
         {"<"}
       </button>
-      <div className="flex flex-col items-center gap-8 w-2/5">
+      <article className="flex flex-col items-center gap-8 w-2/5">
         <h3 className="text-4xl font-bold">{name || "Project name"}</h3>
         <div
           className="relative flex justify-center items-center"
@@ -59,7 +59,7 @@ const Portfolio = () => {
         <p className="italic text-center h-12">
           {description || "Project description"}
         </p>
-      </div>
+      </article>
       <button
         className={`text-8xl hover:scale-150 ${
           currentIndex === LAST_IMG_INDEX && "invisible"
@@ -68,7 +68,7 @@ const Portfolio = () => {
       >
         {">"}
       </button>
-    </div>
+    </section>
   );
 };
 
