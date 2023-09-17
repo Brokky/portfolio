@@ -3,58 +3,58 @@ import MatrixRain from "./parts/MatrixRain";
 import Name from "./parts/Name";
 import Links from "./parts/Links";
 
+const NAME_TEXT = " Daniel Brokk ";
+const JOB_TEXT = "Frontend Developer";
+const CODE_TEXT = "10 PRINT 'Hello World!'\n20 GOTO 10";
+
+const TYPING_STATUS = {
+  NAME: "name",
+  JOB: "job",
+  CODE: "code",
+};
+
 const Header = () => {
-  // states for typing text with blinking cursor
   const [displayedText, setDisplayedText] = useState({
     name: "",
     job: "",
     code: "",
-    typingStatus: "name",
+    typingStatus: TYPING_STATUS.NAME,
   });
 
-  const name = " Daniel Brokk ";
-  const job = "Frontend Developer";
-  const code = "10 PRINT 'Hello World!'\n20 GOTO 10";
-
-  // delay for matrix rain
   const [codeDelay, setCodeDelay] = useState(false);
 
-  // typing text effect
   useEffect(() => {
     if (codeDelay) return;
 
     const interval = setInterval(() => {
       setDisplayedText((prevText) => {
-        const nextNameChar = name[prevText.name.length];
-        const nextJobChar = job[prevText.job.length];
-        const nextCodeChar = code[prevText.code.length];
+        const { name, job, code, typingStatus } = prevText;
+        const nextNameChar = NAME_TEXT[prevText.name.length];
+        const nextJobChar = JOB_TEXT[prevText.job.length];
+        const nextCodeChar = CODE_TEXT[prevText.code.length];
 
         if (nextNameChar) {
           return {
             ...prevText,
-            name: prevText.name + nextNameChar,
+            name: name + nextNameChar,
             typingStatus:
-              prevText.name.length === name.length - 1
-                ? "job"
-                : prevText.typingStatus,
+              name.length === NAME_TEXT.length - 1 ? TYPING_STATUS.JOB : typingStatus,
           };
         } else if (nextJobChar) {
           return {
             ...prevText,
-            job: prevText.job + nextJobChar,
+            job: job + nextJobChar,
             typingStatus:
-              prevText.job.length === job.length - 1
-                ? "finished"
-                : prevText.typingStatus,
+              job.length === JOB_TEXT.length - 1 ? TYPING_STATUS.CODE: typingStatus,
           };
         } else if (nextCodeChar) {
           return {
             ...prevText,
-            code: prevText.code + nextCodeChar,
+            code: code + nextCodeChar,
           };
         }
 
-        if (!nextCodeChar && !codeDelay) {
+        if (!nextCodeChar) {
           setCodeDelay(true);
           setTimeout(() => {
             setDisplayedText({
@@ -77,8 +77,8 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center px-4">
       <MatrixRain displayedText={displayedText} />
-      <Name displayedText={displayedText}/>
-      <Links displayedText={displayedText}/>
+      <Name displayedText={displayedText} />
+      <Links displayedText={displayedText} />
     </header>
   );
 };

@@ -1,4 +1,7 @@
 const Name = ({displayedText}) => {
+  const isNameTyping = displayedText.typingStatus === "name";
+  const isJobTyping = displayedText.typingStatus === "job";
+
   return (
     <div className="flex flex-col items-center space-x-4">
       <h1
@@ -6,14 +9,14 @@ const Name = ({displayedText}) => {
  from-green-400 to-green-700 shadow-lg focus:scale-110 focus:shadow-xl animate-pulse"
       >
         [{displayedText.name}
-        {displayedText.typingStatus === "name" && (
+        {isNameTyping && (
           <span className="text-green-400 animate-blinking">|</span>
         )}
         ]
       </h1>
-      <p className={`text-2xl font-mono border-x-2 border-green-400 px-2 my-4 ${displayedText.typingStatus !== "name" && "border-b-2"}`}>
+      <p className={`text-2xl font-mono border-x-2 border-green-400 px-2 my-4 ${!isNameTyping && "border-b-2"}`}>
         {displayedText.job}
-        {displayedText.typingStatus === "job" && (
+        {isJobTyping && (
           <span className="text-green-400 animate-blinking">|</span>
         )}
       </p>

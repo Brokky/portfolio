@@ -3,20 +3,23 @@ import images from "../../assets/images/index";
 import Button from "./parts/Button";
 import Slide from "./parts/Slide";
 
+const FIRST_IMG_INDEX = 0;
+const LAST_IMG_INDEX = images.length - 1;
+
 const Portfolio = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [FIRST_IMG_INDEX, LAST_IMG_INDEX] = [0, images.length - 1];
+  const [currentIndex, setCurrentIndex] = useState(FIRST_IMG_INDEX);
 
-  const getPrevImg = () => {
-    if (currentIndex > FIRST_IMG_INDEX) {
-      setCurrentIndex((curImg) => curImg - 1);
-    }
-  };
-  const getNextImg = () => {
-    if (currentIndex < LAST_IMG_INDEX) {
-      setCurrentIndex((curImg) => curImg + 1);
-    }
+  const changeSlide = (direction) => {
+    setCurrentIndex((prevIndex) => {
+      if (direction === "prev" && prevIndex > FIRST_IMG_INDEX)
+        return prevIndex - 1;
+
+      if (direction === "next" && prevIndex < LAST_IMG_INDEX)
+        return prevIndex + 1;
+
+      return prevIndex;
+    });
   };
 
   return (
@@ -24,17 +27,15 @@ const Portfolio = () => {
       {/* H2 Projects Title */}
       <Button
         currentIndex={currentIndex}
-        wrongIndex={FIRST_IMG_INDEX}
-        changeSlide={getPrevImg}
+        boundaryIndex={FIRST_IMG_INDEX}
+        changeSlide={() => changeSlide("prev")}
         icon={"<"}
       />
-      <Slide 
-        currentIndex={currentIndex}
-      />
+      <Slide currentIndex={currentIndex} images={images} />
       <Button
         currentIndex={currentIndex}
-        wrongIndex={LAST_IMG_INDEX}
-        changeSlide={getNextImg}
+        boundaryIndex={LAST_IMG_INDEX}
+        changeSlide={() => changeSlide("next")}
         icon={">"}
       />
     </section>
