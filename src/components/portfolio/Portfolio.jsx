@@ -1,5 +1,5 @@
 import { useState } from "react";
-import images from "../../assets/images/index";
+import images from "../../assets/images/projects/index";
 import Button from "./parts/Button";
 import Slide from "./parts/Slide";
 
