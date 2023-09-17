@@ -75,7 +75,7 @@ const Header = () => {
   }, [codeDelay]);
 
   return (
-    <header className="flex justify-between items-center px-4">
+    <header className="flex justify-between items-center min-h-[8rem] px-4">
       <MatrixRain displayedText={displayedText} />
       <Name displayedText={displayedText} />
       <Links displayedText={displayedText} />

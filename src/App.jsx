@@ -1,11 +1,13 @@
 import Header from "./components/header/Header";
 import Portfolio from "./components/portfolio/Portfolio";
+import About from "./components/about/About";
 
 function App() {
 
   return (
     <div className="min-h-screen bg-black text-green-400 flex flex-col p-8 space-y-8">
       <Header />
+      <About />
       <Portfolio />
       {/* Footer / Contact */}
       <div className="mt-auto py-6 border-t-2 border-green-600">

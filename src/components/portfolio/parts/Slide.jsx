@@ -6,7 +6,7 @@ const Slide = ({ currentIndex, images }) => {
 
   return (
     <article className="flex flex-col items-center gap-8 w-2/5">
-      <h3 className="text-4xl font-bold">{name}</h3>
+      <h3 className="text-4xl font-bold tracking-widest">{name}</h3>
       <div
         className="relative flex justify-center items-center"
         onMouseEnter={() => setIsHovered(true)}
