@@ -5,7 +5,7 @@ const Name = ({displayedText}) => {
   return (
     <div className="flex flex-col items-center space-x-4">
       <h1
-        className="text-6xl font-mono bg-clip-text text-transparent bg-gradient-to-r
+        className="text-6xl font-mono tracking-widest bg-clip-text text-transparent bg-gradient-to-r
  from-green-400 to-green-700 shadow-lg focus:scale-110 focus:shadow-xl animate-pulse"
       >
         [{displayedText.name}

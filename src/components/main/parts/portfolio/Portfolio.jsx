@@ -1,13 +1,12 @@
 import { useState } from "react";
-import images from "../../assets/images/projects/index";
+import images from "../../../../assets/images/projects/index";
 import Button from "./parts/Button";
 import Slide from "./parts/Slide";
 
 const FIRST_IMG_INDEX = 0;
 const LAST_IMG_INDEX = images.length - 1;
 
-const Portfolio = () => {
-
+const Portfolio = ({ visibility }) => {
   const [currentIndex, setCurrentIndex] = useState(FIRST_IMG_INDEX);
 
   const changeSlide = (direction) => {
@@ -23,7 +22,9 @@ const Portfolio = () => {
   };
 
   return (
-    <section className="flex justify-evenly items-center py-8 border-2 border-green-600 rounded-3xl">
+    <section
+      className={`flex justify-evenly items-center py-8 border-2 border-green-600 rounded-3xl ${visibility}`}
+    >
       {/* H2 Projects Title */}
       <Button
         currentIndex={currentIndex}

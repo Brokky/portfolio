@@ -62,7 +62,7 @@ const Header = () => {
               code: "",
             });
             setCodeDelay(false);
-          }, 500);
+          }, 1000);
         }
 
         return prevText;
