@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Contacts from "./parts/Contacts";
-import CV from "../../assets/DanielBrokkCV.pdf"
+import CV from "../../assets/DanielBrokk-CV.pdf"
 
 const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,16 +23,16 @@ const Footer = () => {
     <footer
       className={`flex flex-col items-center mt-12 border-t-2 border-green-600 ${visibilityClass}`}
     >
-      <div className="flex justify-evenly w-full  italic">
+      <div className="flex flex-col lg:flex-row justify-evenly items-center lg:items-stretch w-full  italic">
         <Contacts />
         <div className="py-6 flex flex-col items-center">
-          <h3 className="text-3xl font-mono border-b-2 border-green-600 inline-block hover:border-green-700 transition duration-300">
+          <h3 className="text-2xl lg:text-3xl font-mono border-b-2 border-green-600 inline-block hover:border-green-700 transition duration-300">
             Curriculum Vitae
           </h3>
           <a
             href={CV}
             download="DanielBrokk-CV.pdf"
-            className="mt-10 px-4 py-2 text-green-300 border-2 border-green-300 hover:bg-green-300 hover:text-black rounded transition duration-300"
+            className="mt-4 lg:mt-10 px-4 py-2 text-green-300 border-2 border-green-300 hover:bg-green-300 hover:text-black rounded transition duration-300"
           >
             Download CV
           </a>

@@ -20,7 +20,7 @@ const Links = ({ displayedText }) => {
   }`;
 
   return (
-    <ul className="flex lg:flex-col gap-4">
+    <ul className="flex xl:flex-col gap-4">
       {linksData.map((link) => (
         <li key={link.label}>
           <a

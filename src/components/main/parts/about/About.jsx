@@ -38,7 +38,7 @@ const icons = [
 const About = ({ visibility }) => {
   return (
     <section
-      className={`flex flex-col lg:flex-row gap-y-12 items-center justify-around py-12 px-6 border-2 border-green-600 rounded-3xl ${visibility}`}
+      className={`flex flex-col xl:flex-row gap-y-12 items-center justify-around py-12 px-6 border-2 border-green-600 rounded-3xl ${visibility}`}
     >
       <h2 className="text-2xl lg:text-5xl font-mono tracking-widest border-b-2 border-green-600 hover:border-green-700 transition duration-300">About Me</h2>
       <article className="max-w-lg space-y-4 text-justify">
@@ -55,7 +55,7 @@ const About = ({ visibility }) => {
         </p>
       </article>
 
-      <div className="flex flex-wrap lg:w-1/4 justify-center items-center gap-y-2">
+      <div className="flex flex-wrap xl:w-1/4 justify-center items-center gap-y-2">
         {icons.map((icon) => (
           <SkillIcon key={icon.name} icon={icon.src} name={icon.name} />
         ))}

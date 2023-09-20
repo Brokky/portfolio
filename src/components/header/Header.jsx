@@ -75,7 +75,7 @@ const Header = () => {
   }, [codeDelay]);
 
   return (
-    <header className="flex flex-col gap-y-6 lg:flex-row justify-between items-center min-h-[8rem] px-4">
+    <header className="flex flex-col gap-y-6 xl:flex-row justify-between items-center min-h-[8rem] px-4">
       <MatrixRain displayedText={displayedText} />
       <Name displayedText={displayedText} />
       <Links displayedText={displayedText} />

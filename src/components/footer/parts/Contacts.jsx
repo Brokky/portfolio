@@ -31,8 +31,8 @@ const contacts = [
 
 const Contacts = () => {
   return (
-    <address className="flex flex-col py-6">
-      <h3 className="text-3xl font-mono text-center border-b-2 border-green-600 inline-block hover:border-green-700 transition duration-300">
+    <address className="flex flex-col items-center py-6">
+      <h3 className="text-2xl lg:text-3xl w-fit lg:w-full font-mono text-center border-b-2 border-green-600 inline-block hover:border-green-700 transition duration-300">
         Contacts
       </h3>
       <div className="flex flex-col gap-y-2 mt-4">

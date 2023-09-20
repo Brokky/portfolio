@@ -8,6 +8,7 @@ const LAST_IMG_INDEX = images.length - 1;
 
 const Portfolio = ({ visibility }) => {
   const [currentIndex, setCurrentIndex] = useState(FIRST_IMG_INDEX);
+  const { name, src, url, description, alt } = images[currentIndex];
 
   const changeSlide = (direction) => {
     setCurrentIndex((prevIndex) => {
@@ -23,31 +24,27 @@ const Portfolio = ({ visibility }) => {
 
   return (
     <section
-      className={`flex justify-between lg:justify-evenly items-center px-2 lg:px-0  py-8 border-2 border-green-600 rounded-3xl ${visibility}`}
+      className={`flex flex-col lg:justify-evenly gap-y-6 lg:gap-y-12 px-4 py-8 border-2 border-green-600 rounded-3xl ${visibility}`}
     >
-      {/* 
-        <h3><h3>
-        <div>
-          <button />
-          <slide />
-          <button />
-        <div />
-        <p></p>
-      */}
-      
-      <Button
-        currentIndex={currentIndex}
-        boundaryIndex={FIRST_IMG_INDEX}
-        changeSlide={() => changeSlide("prev")}
-        icon={"<"}
-      />
-      <Slide currentIndex={currentIndex} images={images} />
-      <Button
-        currentIndex={currentIndex}
-        boundaryIndex={LAST_IMG_INDEX}
-        changeSlide={() => changeSlide("next")}
-        icon={">"}
-      />
+      <h3 className="flex justify-center items-center text-2xl lg:text-5xl text-center font-mono font-bold tracking-wides min-h-[4rem]">
+        {name}
+      </h3>
+      <div className="flex justify-between lg:justify-center">
+        <Button
+          currentIndex={currentIndex}
+          boundaryIndex={FIRST_IMG_INDEX}
+          changeSlide={() => changeSlide("prev")}
+          icon={"<"}
+        />
+        <Slide src={src} url={url} alt={alt} />
+        <Button
+          currentIndex={currentIndex}
+          boundaryIndex={LAST_IMG_INDEX}
+          changeSlide={() => changeSlide("next")}
+          icon={">"}
+        />
+      </div>
+      <p className="italic text-center min-h-[3rem]">{description}</p>
     </section>
   );
 };
