@@ -1,3 +1,4 @@
+import React from "react";
 import CustomIcon from "../../../../CustomIcon";
 
 const SkillIcon = ({ icon, name }) => (

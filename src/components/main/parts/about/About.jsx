@@ -1,3 +1,4 @@
+import React from "react";
 import SkillIcon from "./parts/SkillIcon";
 import {
   faHtml5,

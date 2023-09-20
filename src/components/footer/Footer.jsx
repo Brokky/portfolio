@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import Contacts from "./parts/Contacts";
 import CV from "../../assets/DanielBrokk-CV.pdf"

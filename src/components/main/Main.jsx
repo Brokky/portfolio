@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import About from "./parts/about/About";
 import Portfolio from "./parts/portfolio/Portfolio";

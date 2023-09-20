@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import MatrixRain from "./parts/MatrixRain";
 import Name from "./parts/Name";

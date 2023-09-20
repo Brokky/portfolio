@@ -1,3 +1,5 @@
+import React from "react";
+
 const Button = ({ currentIndex, boundaryIndex, changeSlide, icon }) => {
   return (
     <button

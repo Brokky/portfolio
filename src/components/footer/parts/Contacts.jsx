@@ -1,3 +1,4 @@
+import React from "react";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import CustomIcon from "../../CustomIcon";

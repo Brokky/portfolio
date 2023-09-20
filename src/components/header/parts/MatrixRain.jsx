@@ -1,3 +1,5 @@
+import React from "react";
+
 const MatrixRain = ({displayedText}) => {
   const isCodeTyping = displayedText.typingStatus === "code";
 

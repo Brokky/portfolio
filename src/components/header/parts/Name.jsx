@@ -1,3 +1,5 @@
+import React from "react";
+
 const Name = ({ displayedText }) => {
   const isNameTyping = displayedText.typingStatus === "name";
   const isJobTyping = displayedText.typingStatus === "job";
