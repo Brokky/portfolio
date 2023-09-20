@@ -14,13 +14,13 @@ const Links = ({ displayedText }) => {
 
   const isVisible = displayedText.typingStatus === "code";
 
-  const commonClass = `w-32 inline-block text-center text-2xl bg-black border-2 rounded-full border-green-400 px-4 py-2
+  const commonClass = `w-24 text-md lg:w-32 lg:text-2xl inline-block text-center bg-black border-2 rounded-full border-green-400 px-4 py-2
   hover:scale-125 hover:bg-green-400 hover:text-black hover:border-black ${
     isVisible ? "opaicty-100" : "opacity-0"
   }`;
 
   return (
-    <ul className="space-y-4">
+    <ul className="flex lg:flex-col gap-4">
       {linksData.map((link) => (
         <li key={link.label}>
           <a

@@ -23,9 +23,18 @@ const Portfolio = ({ visibility }) => {
 
   return (
     <section
-      className={`flex justify-evenly items-center py-8 border-2 border-green-600 rounded-3xl ${visibility}`}
+      className={`flex justify-between lg:justify-evenly items-center px-2 lg:px-0  py-8 border-2 border-green-600 rounded-3xl ${visibility}`}
     >
-      {/* H2 Projects Title */}
+      {/* 
+        <h3><h3>
+        <div>
+          <button />
+          <slide />
+          <button />
+        <div />
+        <p></p>
+      */}
+      
       <Button
         currentIndex={currentIndex}
         boundaryIndex={FIRST_IMG_INDEX}

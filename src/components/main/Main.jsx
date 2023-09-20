@@ -15,22 +15,22 @@ const Main = () => {
 
     const portfolioTimeout = setTimeout(() => {
       setIsVisible((prev) => ({ ...prev, portfolio: true }));
-    }, 6000); 
+    }, 6000);
 
     return () => {
       clearTimeout(aboutTimeout);
       clearTimeout(portfolioTimeout);
     };
-  }, []); 
+  }, []);
 
   const visibilityClass = (component) => {
     return component
       ? "transition duration-1000"
-      : "transition duration-1000 opacity-0";
+      : "transition duration-1000 max-h-0 opacity-0";
   };
 
   return (
-    <main className="flex flex-col gap-y-8">
+    <main className="flex flex-col mt-6 gap-y-8">
       <About visibility={visibilityClass(isVisible.about)} />
       <Portfolio visibility={visibilityClass(isVisible.portfolio)} />
     </main>

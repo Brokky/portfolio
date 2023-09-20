@@ -1,7 +1,7 @@
 import CustomIcon from "../../../../CustomIcon";
 
 const SkillIcon = ({ icon, name }) => (
-  <div className="flex flex-col justify-center items-center hover:bg-green-100 rounded transition w-1/3">
+  <div className="flex flex-col justify-center items-center hover:bg-green-100 rounded transition w-1/2 lg:w-1/3">
     <CustomIcon
       icon={icon}
       size="5x"

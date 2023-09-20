@@ -5,8 +5,8 @@ const Slide = ({ currentIndex, images }) => {
   const { name, src, url, description, alt } = images[currentIndex];
 
   return (
-    <article className="flex flex-col items-center gap-8 w-2/5">
-      <h3 className="text-4xl font-mono font-bold tracking-widest">{name}</h3>
+    <article className="flex flex-col items-center gap-12 w-3/5">
+      <h3 className="text-2xl lg:text-4xl text-center font-mono font-bold tracking-widest">{name}</h3>
       <div
         className="relative flex justify-center items-center"
         onMouseEnter={() => setIsHovered(true)}
@@ -15,7 +15,7 @@ const Slide = ({ currentIndex, images }) => {
         <img
           src={src}
           alt={alt}
-          className={`max-h-60 max-w-lg border-4 border-dashed border-green-400 rounded-3xl transition-opacity duration-500 ${
+          className={`max-h-60 max-w-[10rem] lg:max-w-lg border-4 border-dashed border-green-400 rounded-3xl transition-opacity duration-500 ${
             isHovered && "opacity-30"
           }`}
         />
@@ -30,7 +30,7 @@ const Slide = ({ currentIndex, images }) => {
           View project
         </a>
       </div>
-      <p className="italic text-center h-12">
+      <p className="italic text-center min-h-[3rem]">
         {description}
       </p>
     </article>
