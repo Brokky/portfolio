@@ -1,8 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CustomIcon from "../../../../CustomIcon";
 
 const SkillIcon = ({ icon, name }) => (
   <div className="flex flex-col justify-center items-center hover:bg-green-100 rounded transition w-1/3">
-    <FontAwesomeIcon
+    <CustomIcon
       icon={icon}
       size="5x"
       className="py-2"
