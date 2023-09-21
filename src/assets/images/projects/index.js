@@ -3,7 +3,7 @@ import drums from "./Drums.png";
 import pomodoro from "./Pomodoro.png";
 import recipes from "./Recipes.png";
 import summarizer from "./Summarizer.png";
-import toDoApp from "./toDoApp.png";
+import toDoApp from "./ToDoApp.png";
 import weather from "./weather.png";
 
 const images = [
