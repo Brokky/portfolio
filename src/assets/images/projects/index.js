@@ -4,7 +4,7 @@ import pomodoro from "./Pomodoro.png";
 import recipes from "./Recipes.png";
 import summarizer from "./Summarizer.png";
 import toDoApp from "./ToDoApp.png";
-import weather from "./weather.png";
+import weather from "./Weather.png";
 
 const images = [
   {
