@@ -15,7 +15,7 @@ const contacts = [
     {
       icon: faWhatsapp,
       link: "https://wa.me/972552876823",
-      text: "WhatsApp",
+      text: "wa.me/972552876823",
       size: "2xl",
       ariaLabel: "WhatsApp",
       newTab: true,
@@ -23,7 +23,7 @@ const contacts = [
     {
       icon: faTelegram,
       link: "https://t.me/danielbrokk",
-      text: "Telegram",
+      text: "t.me/danielbrokk",
       size: "2xl",
       ariaLabel: "Telegram",
       newTab: true,
