@@ -5,8 +5,16 @@ import recipes from "./Recipes.png";
 import summarizer from "./Summarizer.png";
 import toDoApp from "./ToDoApp.png";
 import weather from "./Weather.png";
+import hebrewHarbor from "./Hebrew-Harbor.png";
 
 const images = [
+  {
+    src: hebrewHarbor,
+    name: "Hebrew Harbor",
+    description: "A web application for saving and learning words",
+    url: "https://brokky.github.io/HebrewHarbor/#/",
+    alt: "Screenshot of Hebrew Harbor home page",
+  },
   {
     src: toDoApp,
     name: "Task Manager",
