@@ -43,14 +43,14 @@ const About = ({ visibility }) => {
     >
       <h2 className="text-2xl lg:text-5xl font-mono tracking-widest border-b-2 border-green-600 hover:border-green-700 transition duration-300">About Me</h2>
       <article className="max-w-lg space-y-4 text-justify">
-        <p className="text-md lg:text-lg leading-relaxed">
+        <p className="text-md lg:text-lg leading-relaxed font-mono">
           Hello! I'm Daniel Brokk, a frontend developer specializing in React. I
           genuinely enjoy web development and constantly seek ways to improve.
           For me, it's about crafting functional sites and apps that users will
           love. Quality work and continuous learning are at the heart of what I
           do.
         </p>
-        <p className="text-md lg:text-lg leading-relaxed">
+        <p className="text-md lg:text-lg leading-relaxed font-mono">
           I'm always eager to embrace new challenges and improve my skills.
           Let's create something amazing together!
         </p>
