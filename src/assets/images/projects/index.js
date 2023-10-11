@@ -11,7 +11,7 @@ const images = [
   {
     src: hebrewHarbor,
     name: "Hebrew Harbor",
-    description: "A web application for saving and learning words",
+    description: "A web application for saving and learning words (in development)",
     url: "https://brokky.github.io/HebrewHarbor/#/",
     alt: "Screenshot of Hebrew Harbor home page",
   },
